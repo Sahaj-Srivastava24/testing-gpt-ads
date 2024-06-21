@@ -10,24 +10,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Minimize layout shift by reserving space for ads." />
-  <title>Reserve space for ads</title>
+  <title>Example 3 - Reserve space for ads</title>
   <link rel="stylesheet" href="./index.css" />
+  <!-- Step 1 - Load the script -->
   <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
   <script>
     window.googletag = window.googletag || { cmd: [] };
+    function defineSlotAndAddService(slotId, size) {
+      googletag
+        .defineSlot("/6355419/Travel/Europe", size, slotId)
+        .addService(googletag.pubads());
+    }
 
     googletag.cmd.push(() => {
-      googletag
-        .defineSlot("/6355419/Travel/Europe", [ 300, 250 ], "slot-1")
-        .addService(googletag.pubads());
-      googletag
-        .defineSlot("/6355419/Travel/Europe", [ 300, 250 ], "slot-2")
-        .addService(googletag.pubads());
-      googletag
-        .defineSlot("/6355419/Travel/Europe", [ 300, 250 ], "slot-3")
-        .addService(googletag.pubads());
+      // Step 2 - Define ad slots.
+      defineSlotAndAddService("slot-1", [ 300, 250 ]);
+      defineSlotAndAddService("slot-2", [ 300, 250 ]);
+      defineSlotAndAddService("slot-3", [ 300, 250 ]);
 
-      // Enable SRA and services.
+      // Step 3 -  Enable SRA and services.
       googletag.pubads().enableSingleRequest();
       googletag.enableServices();
     });
@@ -68,7 +69,7 @@
   </div>
   <script>
     googletag.cmd.push(() => {
-      // Register click event handlers.
+      // Step 4 - Display ads when the button is clicked.
       document.getElementById("loadAdsButton").addEventListener("click", () => {
         // Request and render all previously defined ad slots.
         googletag.cmd.push(() => googletag.display("slot-3"));
