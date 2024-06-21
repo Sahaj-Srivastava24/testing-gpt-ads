@@ -1,0 +1,29 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  float: left;
+  height: 500px;
+  min-width: 300px;
+  max-width: 33%;
+}
+
+.placeholder {
+  align-items: center;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+}
+
+.placeholder:empty::before {
+  background-color: dimgrey;
+  border-radius: 5px;
+  color: lightgrey;
+  content: "Ad";
+  font: 12px sans-serif;
+  padding: 3px;
+  text-align: center;
+  width: 20px;
+}
