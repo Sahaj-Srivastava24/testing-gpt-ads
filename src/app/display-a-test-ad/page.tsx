@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect } from "react"
 
 export default function TestAd() {
@@ -18,7 +20,8 @@ export default function TestAd() {
     }
 
     googletag.cmd.push(defineAdSlot);
-  })
+    console.log("added ")
+  }, [])
 
   return (
     <div>
