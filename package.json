@@ -1,5 +1,7 @@
 {
   "name": "testing-gpt",
+  "author": "Sahaj Srivastava",
+  "description": "Testing Google Publisher Tag with Next.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
