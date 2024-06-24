@@ -9,4 +9,9 @@ export const sampleCases = [
     description: "This example displays a test ad using the Google Publisher Tag library",
     href: "/display-a-web-interstitial",
   },
+  {
+    title: "Listening to ad events",
+    description: "This example displays a test ad using the Google Publisher Tag library",
+    href: "/listening-ad-events",
+  },
 ]
