@@ -7,6 +7,7 @@ export default function InterstitialPage() {
   const adStyles = {
     width: "100px",
     height: "100px",
+    background: "white"
   }
 
   useEffect(() => {
@@ -54,10 +55,12 @@ export default function InterstitialPage() {
     }
 
     function registerStaticAd() {
+      const staticAdId = "static-ad-1";
       googletag
-        .defineSlot("/6355419/Travel/Europe", [100, 100], "static-ad-1")
+        .defineSlot("/6355419/Travel/Europe", [100, 100], staticAdId)
         .addService(googletag.pubads());
       googletag.enableServices();
+      googletag.display(staticAdId);
     }
     
     googletag.cmd.push(registerInterstitial)
@@ -65,7 +68,8 @@ export default function InterstitialPage() {
   }, [])
 
   return (
-    <section>
+    <section className="flex items-center justify-center flex-col gap-8 mt-10">
+      <h1>Sample 2 - Display both static and interstitial ads</h1>
       <div id="static-ad-1" style={adStyles} />
       <div className="content">
         <span id="status">{statusText}</span>

@@ -19,14 +19,18 @@ export default function TestAd() {
       googletag.enableServices();
     }
 
+    function displayAd() {
+      googletag.display("banner-ad");
+    }
+
     googletag.cmd.push(defineAdSlot);
-    console.log("added ")
+    googletag.cmd.push(displayAd);
   }, [])
 
   return (
-    <div>
-      <h1>This is a test ad</h1>
+    <section className="flex items-center justify-center flex-col gap-8 mt-10">
+      <h1>Sample 1 - Display a test ad</h1>
       <div id="banner-ad" style={adStyles}></div>
-    </div>
+    </section>
   )
 }
