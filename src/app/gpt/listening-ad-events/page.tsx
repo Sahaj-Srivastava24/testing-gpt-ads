@@ -7,23 +7,21 @@ const AdEventListeners = () => {
   const [events, setEvents] = useState<EventDetails[]>([]);
   const [requestedTimestamp, setRequestedTimestamp] = useState<Record<string, number>>({});
 
-  function handleEvent (eventMessage: string, event: any, details: { [key: string]: any } = {}) {
-    const slotId = event.slot.getSlotElementId();
-    
-    setEvents((prev) => [
-      ...prev,
-      {
-        slotId,
-        eventMessage,
-        details,
-        timeFromRequest: Date.now() - (requestedTimestamp[slotId] || 0),
-      },
-    ]);
-  };
-
-  console.log(requestedTimestamp, "requestedTimestamp")
-
   useEffect(() => {
+    function handleEvent(eventMessage: string, event: any, details: { [key: string]: any } = {}) {
+      const slotId = event.slot.getSlotElementId();
+
+      setEvents((prev) => [
+        ...prev,
+        {
+          slotId,
+          eventMessage,
+          details,
+          timeFromRequest: Date.now() - (requestedTimestamp[slotId] || 0),
+        },
+      ]);
+    };
+
     function appendEventListeners() {
       const eventListeners = returnEventListeners(handleEvent, setRequestedTimestamp);
       Object.keys(eventListeners).forEach((eventName) => {
@@ -40,7 +38,7 @@ const AdEventListeners = () => {
     window.googletag.cmd.push(() => {
       window.googletag.display('ad-slot-2');
     });
-  }, []);
+  }, [requestedTimestamp]);
 
   return (
     <>

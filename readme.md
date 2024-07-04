@@ -11,6 +11,7 @@
 - [PubAds Service](https://developers.google.com/publisher-tag/reference#googletag.pubadsservice)
 - [Event Listeners](https://developers.google.com/publisher-tag/reference#googletag.Service_addEventListener)
 - [GPT Documentation](https://developers.google.com/publisher-tag/reference#javascript_17)
+- [Adsense - DevTools Debugging](https://support.google.com/adsense/answer/10858959?hl=en&sjid=3486150226583188162-AP)
 
 ## Must Reads
 
