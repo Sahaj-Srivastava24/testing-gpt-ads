@@ -1,29 +1,57 @@
+<!DOCTYPE html>
 <html>
 
 <head>
   <title>Sample Adsense Manual Ads</title>
-    <script 
-      async 
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3452022011371122"
-      crossorigin="anonymous">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3452022011371122"
+    crossorigin="anonymous">
     </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const insElement = document.querySelector('ins.adsbygoogle');
+      const logContainer = document.createElement('div');
+      logContainer.id = 'log-container';
+      document.body.appendChild(logContainer);
+
+      const mutationCallback = (mutationsList) => {
+        mutationsList.forEach((mutation) => {
+          if (mutation.type === 'attributes') {
+            const attributeName = mutation.attributeName;
+            if (attributeName === 'data-ad-format' || attributeName === 'data-ad-status') {
+              const oldValue = mutation.oldValue;
+              const newValue = insElement.getAttribute(attributeName);
+              const logEntry = document.createElement('p');
+              logEntry.textContent = `Attribute '${attributeName}' changed from '${oldValue}' to '${newValue}'`;
+              logContainer.appendChild(logEntry);
+            }
+          }
+        });
+      };
+
+      const observer = new MutationObserver(mutationCallback);
+
+      observer.observe(insElement, {
+        attributes: true,
+        attributeFilter: ['data-ad-format', 'data-ad-status'],
+        attributeOldValue: true
+      });
+
+      console.log('Mutation Observer is now watching for changes to data-ad-format and data-ad-status attributes.');
+    });
+  </script>
 </head>
 
 <body>
-  <div style="display: flex;flex-direction: column; align-items: center;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
     <h1>Adsense manual ad</h1>
     <p>
       You'll need to use a registered host here to see the ads. (local.quizzop.com)
-      Other wise you'll get a 403 - Forbidden on the network call.
+      Otherwise you'll get a 403 - Forbidden on the network call.
       We'll have a manual 728x90 ad here:
     </p>
   </div>
-  <ins 
-    class="adsbygoogle" 
-    style="display:inline-block;width:728px;height:90px" 
-    data-ad-client="ca-pub-3452022011371122"
-    data-ad-slot="7744382820"
-    data-ad-format="auto">
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3452022011371122"
+    data-ad-slot="7744382820" data-ad-format="auto">
   </ins>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
