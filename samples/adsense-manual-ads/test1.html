@@ -42,7 +42,7 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             console.log('Ad is in viewport. Loading ad...');
-            window.adsbygoogle.push({});
+            (adsbygoogle = window.adsbygoogle || []).push({});
             observer.unobserve(insElement);
           }
         });
@@ -71,9 +71,6 @@
   <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3452022011371122"
     data-ad-slot="7744382820" data-ad-format="auto">
   </ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || [])
-  </script>
 </body>
 
 </html>
